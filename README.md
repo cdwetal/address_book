@@ -1,6 +1,6 @@
 # address_book
 
-A simple address book app built on a modified MERN stack. M is for MySQL in this case.
+A simple address book app built on a modified MERN stack. M is for MySQL in this case, and Babel is used instead of Webpack, and there is no use Redux.
 
 ## Installing
 
