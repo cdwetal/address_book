@@ -4,7 +4,7 @@ var mysql = require('mysql');
 var db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'cw#rvtd:3',
+    password: '',
     database: 'address_book'
 });
 var app = express();
