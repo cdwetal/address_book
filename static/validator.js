@@ -85,12 +85,12 @@ $(document).ready(function() {
                 }
 
                 $.ajax({
-                    url: '/api/addresses', // url where to submit the request
-                    type: "POST", // type of action POST || GET
-                    dataType: 'json', // data type
+                    url: '/api/addresses',
+                    type: "POST",
+                    dataType: 'json',
                     contentType: "application/json",
                     processData: false,
-                    data: JSON.stringify(returnArray), // post data || get data
+                    data: JSON.stringify(returnArray),
                     success: function(result) {
                         $('#add_address_modal').modal('hide')
                         var table = $('#address_table').DataTable();
