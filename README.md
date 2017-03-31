@@ -1,6 +1,6 @@
 # address_book
 
-A simple address book app built on the MERN stack.
+A simple address book app built on a modified MERN stack. M is for MySQL in this case.
 
 ## Installing
 
