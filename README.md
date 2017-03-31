@@ -24,3 +24,14 @@ will start the address_book app. You may view that running app in a browser by n
 ```
 http://localhost:3000/
 ```
+
+## Building
+If you wish to rebuild the address_book app, you must have gulp installed globally. You may do this by opening a terminal window and issuing the command
+```
+npm install -g gulp
+```
+After installing gulp globally, in a terminal window, navigate to the directory in which the project was extracted and issue the command
+```
+gulp
+```
+This will update the bundle.js file in the static folder. You may now run the app as illustrated in the previous section.

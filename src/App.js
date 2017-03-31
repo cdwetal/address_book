@@ -7,10 +7,10 @@ var createBrowserHistory = require('history/lib/createBrowserHistory');
 var Main = require('./Main');
 
 ReactDOM.render(
-  (
-    <Router history={createBrowserHistory()}>
-      <Route path="/" component={Main} />
-    </Router>
-  ),
-  document.getElementById('main')
+	(
+		<Router history={createBrowserHistory()}>
+			<Route path="/" component={Main} />
+    	</Router>
+  	),
+  	document.getElementById('main')
 );

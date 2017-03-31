@@ -27,7 +27,7 @@ app.get('/api/addresses/', function(request, response) {
 
 app.post('/api/addresses', function(request, response) {
     var address = request.body;
-    if (address.firstName === "" || address.lastName === "" || address.streetAddress === "" || address.city === "" || address.state === "" || address.zip === "") {
+    if (address.firstName === '' || address.lastName === '' || address.streetAddress === '' || address.city === '' || address.state === '' || address.zip === '') {
       response.status(500).send({ message: 'Error: fields cannot be null or empty.'});
       return;
     }

@@ -43550,7 +43550,6 @@ class AddAddressModal extends React.Component {
 				'Add ',
 				React.createElement('span', { className: 'glyphicon glyphicon-plus' })
 			),
-			React.createElement(Modal, null),
 			React.createElement(
 				'div',
 				{ className: 'modal fade', id: 'add_address_modal', role: 'dialog' },
@@ -44024,102 +44023,102 @@ module.exports = AddAddressModal;
 var React = require('react');
 
 var AddressRow = React.createClass({
-  displayName: "AddressRow",
+    displayName: "AddressRow",
 
-  render: function () {
-    return React.createElement(
-      "tr",
-      null,
-      React.createElement(
-        "td",
-        null,
-        this.props.data.firstName
-      ),
-      React.createElement(
-        "td",
-        null,
-        this.props.data.lastName
-      ),
-      React.createElement(
-        "td",
-        null,
-        this.props.data.streetAddress
-      ),
-      React.createElement(
-        "td",
-        null,
-        this.props.data.city
-      ),
-      React.createElement(
-        "td",
-        null,
-        this.props.data.state
-      ),
-      React.createElement(
-        "td",
-        null,
-        this.props.data.zip
-      )
-    );
-  }
+    render: function () {
+        return React.createElement(
+            "tr",
+            null,
+            React.createElement(
+                "td",
+                null,
+                this.props.data.firstName
+            ),
+            React.createElement(
+                "td",
+                null,
+                this.props.data.lastName
+            ),
+            React.createElement(
+                "td",
+                null,
+                this.props.data.streetAddress
+            ),
+            React.createElement(
+                "td",
+                null,
+                this.props.data.city
+            ),
+            React.createElement(
+                "td",
+                null,
+                this.props.data.state
+            ),
+            React.createElement(
+                "td",
+                null,
+                this.props.data.zip
+            )
+        );
+    }
 });
 
 var AddressTable = React.createClass({
-  displayName: "AddressTable",
+    displayName: "AddressTable",
 
-  render: function () {
-    var rows = [];
-    this.props.data.forEach(function (address) {
-      rows.push(React.createElement(AddressRow, { data: address, key: address.id }));
-    });
-    return React.createElement(
-      "table",
-      { className: "display", id: "address_table" },
-      React.createElement(
-        "thead",
-        null,
-        React.createElement(
-          "tr",
-          null,
-          React.createElement(
-            "th",
-            null,
-            "First Name"
-          ),
-          React.createElement(
-            "th",
-            null,
-            "Last Name"
-          ),
-          React.createElement(
-            "th",
-            null,
-            "Street Address"
-          ),
-          React.createElement(
-            "th",
-            null,
-            "City"
-          ),
-          React.createElement(
-            "th",
-            null,
-            "State"
-          ),
-          React.createElement(
-            "th",
-            null,
-            "Zip"
-          )
-        )
-      ),
-      React.createElement(
-        "tbody",
-        null,
-        rows
-      )
-    );
-  }
+    render: function () {
+        var rows = [];
+        this.props.data.forEach(function (address) {
+            rows.push(React.createElement(AddressRow, { data: address, key: address.id }));
+        });
+        return React.createElement(
+            "table",
+            { className: "display", id: "address_table" },
+            React.createElement(
+                "thead",
+                null,
+                React.createElement(
+                    "tr",
+                    null,
+                    React.createElement(
+                        "th",
+                        null,
+                        "First Name"
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        "Last Name"
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        "Street Address"
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        "City"
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        "State"
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        "Zip"
+                    )
+                )
+            ),
+            React.createElement(
+                "tbody",
+                null,
+                rows
+            )
+        );
+    }
 });
 
 module.exports = AddressTable;
@@ -44146,46 +44145,46 @@ var AddAddressModal = require('./AddAddressModal');
 var Request = require('superagent');
 
 class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { people: [] };
-  }
+    constructor(props) {
+        super(props);
+        this.state = { people: [] };
+    }
 
-  getAddresses() {
-    Request.get('http://localhost:3000/api/addresses').then(response => {
-      this.setState({ people: response.body });
-    });
-  }
+    getAddresses() {
+        Request.get('http://localhost:3000/api/addresses').then(response => {
+            this.setState({ people: response.body });
+        });
+    }
 
-  componentWillMount() {
-    this.getAddresses();
-  }
+    componentWillMount() {
+        this.getAddresses();
+    }
 
-  render() {
-    return React.createElement(
-      'div',
-      null,
-      React.createElement(
-        'div',
-        { className: 'row' },
-        React.createElement(
-          'div',
-          { className: 'col-md-8 pull-left' },
-          React.createElement(
-            'h1',
+    render() {
+        return React.createElement(
+            'div',
             null,
-            'Address Book'
-          )
-        ),
-        React.createElement(
-          'div',
-          { className: 'col-md-4' },
-          React.createElement(AddAddressModal, null)
-        )
-      ),
-      React.createElement(AddressTable, { data: this.state.people })
-    );
-  }
+            React.createElement(
+                'div',
+                { className: 'row' },
+                React.createElement(
+                    'div',
+                    { className: 'col-md-8 pull-left' },
+                    React.createElement(
+                        'h1',
+                        null,
+                        'Address Book'
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'col-md-4' },
+                    React.createElement(AddAddressModal, null)
+                )
+            ),
+            React.createElement(AddressTable, { data: this.state.people })
+        );
+    }
 }
 
 module.exports = Main;

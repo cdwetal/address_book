@@ -1,66 +1,65 @@
-  $(document).ready(function() {
+$(document).ready(function() {
     $('#address_table').DataTable();
     $('#address_form').bootstrapValidator({
-        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            firstName: {
-                validators: {
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                firstName: {
+                    validators: {
                         stringLength: {
-                        max: 50,
-                        message: 'First name cannot be more than 50 characters.'
-                    },
+                            max: 50,
+                            message: 'First name cannot be more than 50 characters.'
+                        },
                         notEmpty: {
-                        message: 'Please supply the first name'
+                            message: 'Please supply the first name'
+                        }
                     }
-                }
-            },
-             lastName: {
-                validators: {
-                     stringLength: {
-                        max: 50,
-                        message: 'Last name cannot be more than 50 characters.'
-                    },
-                    notEmpty: {
-                        message: 'Please supply the last name'
+                },
+                lastName: {
+                    validators: {
+                        stringLength: {
+                            max: 50,
+                            message: 'Last name cannot be more than 50 characters.'
+                        },
+                        notEmpty: {
+                            message: 'Please supply the last name'
+                        }
                     }
-                }
-            },
-            streetAddress: {
-                validators: {
-                     stringLength: {
-                        max: 100,
-                        message: 'Address cannot be more than 100 characters.'
-                    },
-                    notEmpty: {
-                        message: 'Please supply the street address'
+                },
+                streetAddress: {
+                    validators: {
+                        stringLength: {
+                            max: 100,
+                            message: 'Address cannot be more than 100 characters.'
+                        },
+                        notEmpty: {
+                            message: 'Please supply the street address'
+                        }
                     }
-                }
-            },
-            city: {
-                validators: {
-                     stringLength: {
-                        max: 50,
-                        message: 'City cannot be more than 50 characters.'
-                    },
-                    notEmpty: {
-                        message: 'Please supply the city'
+                },
+                city: {
+                    validators: {
+                        stringLength: {
+                            max: 50,
+                            message: 'City cannot be more than 50 characters.'
+                        },
+                        notEmpty: {
+                            message: 'Please supply the city'
+                        }
                     }
-                }
-            },
-            state: {
-                validators: {
-                    notEmpty: {
-                        message: 'Please select the state'
+                },
+                state: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please select the state'
+                        }
                     }
-                }
-            },
-            zip: {
-                validators: {
+                },
+                zip: {
+                    validators: {
                         notEmpty: {
                             message: 'Please supply your zip code'
                         },
@@ -75,19 +74,13 @@
         .on('success.form.bv', function(e) {
             if (!e.isDefaultPrevented()) {
                 $('#address_form').data('bootstrapValidator').resetForm();
-                // Prevent form submission
                 e.preventDefault();
-
-                // Get the form instance
                 var $form = $(e.target);
-
-                // Get the BootstrapValidator instance
                 var bv = $form.data('bootstrapValidator');
-
                 var array = $form.serializeArray();
-
                 var returnArray = {};
-                for (var i = 0; i < array.length; i++){
+
+                for (var i = 0; i < array.length; i++) {
                     returnArray[array[i]['name']] = array[i]['value'];
                 }
 
@@ -97,21 +90,21 @@
                     dataType: 'json', // data type
                     contentType: "application/json",
                     processData: false,
-                    data :JSON.stringify(returnArray), // post data || get data
+                    data: JSON.stringify(returnArray), // post data || get data
                     success: function(result) {
                         // you can see the result from the console
                         // tab of the developer tools
                         $('#add_address_modal').modal('hide')
                         var table = $('#address_table').DataTable();
                         if (result['message'] === 'Success') {
-                          table.row.add([
-                              returnArray['firstName'],
-                              returnArray['lastName'],
-                              returnArray['streetAddress'],
-                              returnArray['city'],
-                              returnArray['state'],
-                              returnArray['zip']
-                           ]).draw(false);
+                            table.row.add([
+                                returnArray['firstName'],
+                                returnArray['lastName'],
+                                returnArray['streetAddress'],
+                                returnArray['city'],
+                                returnArray['state'],
+                                returnArray['zip']
+                            ]).draw(false);
                         }
                     },
                     error: function(xhr, response, text) {
@@ -123,10 +116,10 @@
         });
 });
 
-$('#add_address_modal').on('hidden.bs.modal', function () {
+$('#add_address_modal').on('hidden.bs.modal', function() {
     $('#address_form')[0].reset();
 })
 
 $('#add_address_modal').on('shown.bs.modal', function() {
-  $('#address_form').data('bootstrapValidator').resetForm();
+    $('#address_form').data('bootstrapValidator').resetForm();
 })
