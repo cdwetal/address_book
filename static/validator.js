@@ -92,8 +92,6 @@ $(document).ready(function() {
                     processData: false,
                     data: JSON.stringify(returnArray), // post data || get data
                     success: function(result) {
-                        // you can see the result from the console
-                        // tab of the developer tools
                         $('#add_address_modal').modal('hide')
                         var table = $('#address_table').DataTable();
                         if (result['message'] === 'Success') {
