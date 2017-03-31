@@ -8,7 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
+    "type": "git",
     "url": "https://github.com/cdwetal/address_book.git"
+  },
   "author": "Christopher Washington",
   "license": "ISC",
   "dependencies": {

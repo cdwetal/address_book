@@ -11,7 +11,8 @@
             firstName: {
                 validators: {
                         stringLength: {
-                        min: 2,
+                        max: 50,
+                        message: 'First name cannot be more than 50 characters.'
                     },
                         notEmpty: {
                         message: 'Please supply the first name'
@@ -21,7 +22,8 @@
              lastName: {
                 validators: {
                      stringLength: {
-                        min: 2,
+                        max: 50,
+                        message: 'Last name cannot be more than 50 characters.'
                     },
                     notEmpty: {
                         message: 'Please supply the last name'
@@ -31,7 +33,8 @@
             streetAddress: {
                 validators: {
                      stringLength: {
-                        min: 8,
+                        max: 100,
+                        message: 'Address cannot be more than 100 characters.'
                     },
                     notEmpty: {
                         message: 'Please supply the street address'
@@ -41,7 +44,8 @@
             city: {
                 validators: {
                      stringLength: {
-                        min: 4,
+                        max: 50,
+                        message: 'City cannot be more than 50 characters.'
                     },
                     notEmpty: {
                         message: 'Please supply the city'
@@ -98,24 +102,31 @@
                         // you can see the result from the console
                         // tab of the developer tools
                         $('#add_address_modal').modal('hide')
-                        $('#address_form')[0].reset();
                         var table = $('#address_table').DataTable();
-                        table.row.add([
-                            returnArray['firstName'],
-                            returnArray['lastName'], 
-                            returnArray['streetAddress'],
-                            returnArray['city'],
-                            returnArray['state'],
-                            returnArray['zip']
-                         ]).draw(false);
+                        if (result['message'] === 'Success') {
+                          table.row.add([
+                              returnArray['firstName'],
+                              returnArray['lastName'],
+                              returnArray['streetAddress'],
+                              returnArray['city'],
+                              returnArray['state'],
+                              returnArray['zip']
+                           ]).draw(false);
+                        }
                     },
-                    error: function(xhr, resp, text) {
+                    error: function(xhr, response, text) {
                         alert('There was an error adding the address.');
-                        $('#address_form')[0].reset();
-                        $('#add_address_modal').modal('hide')
+                        console.log(text);
                     }
                 });
             }
         });
 });
 
+$('#add_address_modal').on('hidden.bs.modal', function () {
+    $('#address_form')[0].reset();
+})
+
+$('#add_address_modal').on('shown.bs.modal', function() {
+  $('#address_form').data('bootstrapValidator').resetForm();
+})

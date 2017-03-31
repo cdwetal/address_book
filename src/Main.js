@@ -11,7 +11,6 @@ class Main extends React.Component {
   }
 
   getAddresses() {
-    console.log('request');
     Request.get('http://localhost:3000/api/addresses').then((response) => {
       this.setState({people: response.body});
     });
