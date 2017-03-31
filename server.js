@@ -13,7 +13,7 @@ app.use(express.static('static'));
 
 app.use(bodyParser.json());
 
-db.query('CREATE TABLE IF NOT EXISTS addresses (id int(11) NOT NULL AUTO_INCREMENT, firstName varchar(50) NOT NULL, lastName varchar(50) NOT NULL, streetAddress varchar(50) NOT NULL, city varchar(50) NOT NULL, state varchar(2) NOT NULL, zip varchar(10) NOT NULL, PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;');
+db.query('CREATE TABLE IF NOT EXISTS addresses (id int(11) NOT NULL AUTO_INCREMENT, firstName varchar(50) NOT NULL, lastName varchar(50) NOT NULL, streetAddress varchar(100) NOT NULL, city varchar(50) NOT NULL, state varchar(2) NOT NULL, zip varchar(10) NOT NULL, PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;');
 
 app.get('/api/addresses/', function(request, response) {
     db.query('SELECT * FROM addresses', function(error, rows, fields) {
