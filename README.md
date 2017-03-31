@@ -4,7 +4,7 @@ A simple address book app built on the MERN stack.
 
 ## Installing
 
-To install the address_book app, please be sure to setup your MySQL database properly. You only need to issue the command
+To install the address_book app, extract the downloaded zip file anywhere on your harddrive. Please be sure to setup your MySQL database properly. You only need to issue the command
 ```
 CREATE DATABASE address_book;
 ```
