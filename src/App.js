@@ -10,7 +10,7 @@ ReactDOM.render(
 	(
 		<Router history={createBrowserHistory()}>
 			<Route path="/" component={Main} />
-    	</Router>
+    		</Router>
   	),
   	document.getElementById('main')
 );
