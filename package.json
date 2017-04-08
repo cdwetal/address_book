@@ -2,7 +2,7 @@
     "name":"address_book",
     "version":"1.0.0",
     "description":"A simple addres book app.",
-    "main":"webapp.js",
+    "main":"server.js",
     "scripts":{  
         "start": "node server",
         "dev":"gulp && node server",
